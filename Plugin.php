@@ -28,18 +28,19 @@ class Plugin extends PluginBase
     {
         return [
             'functions' => [
-                'getManifest' => [$this, 'readManifest']
+                'getVersionedCss' => [$this, 'readManifest']
             ]
         ];
     }
 
-    public function readManifest($path)
+    public function readManifest($path, $prefix = '/assets')
     {
         $loc = env('MANIFEST_PATH');
         $manifest = file_get_contents($loc);
 
         $manifest = json_decode($manifest);
+        $themePath = Config::get('app.url') . Config::get('cms.themesPath') . "/" . Config::get('cms.activeTheme');
 
-        return $manifest->$path;  
+        return $themePath . $prefix . $manifest->$path;
     }
 }
