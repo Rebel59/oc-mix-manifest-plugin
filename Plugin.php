@@ -2,6 +2,7 @@
 
 use Backend;
 use Config;
+use Cms\Classes\Theme;
 use System\Classes\PluginBase;
 
 /**
@@ -38,9 +39,10 @@ class Plugin extends PluginBase
     {
         $loc = env('MANIFEST_PATH');
         $manifest = file_get_contents($loc);
-
         $manifest = json_decode($manifest);
-        $themePath = Config::get('app.url') . Config::get('cms.themesPath') . "/" . Config::get('cms.activeTheme');
+
+        $themeCode = Theme::getActiveThemeCode();
+        $themePath = Config::get('app.url') . Config::get('cms.themesPath') . "/" . $themeCode;
 
         return $themePath . $prefix . $manifest->$path;
     }
