@@ -1,6 +1,7 @@
 <?php namespace Rebel59\MixManifest;
 
 use Backend;
+use Config;
 use System\Classes\PluginBase;
 
 /**
