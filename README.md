@@ -10,20 +10,23 @@ The next step is set up your `env` file and add the `MANIFEST_PATH` field to you
 
 
 ## How to use
-After installing this plugin you can call `getVersionedCss()` in Twig. This function takes one parameter which should be the relative path to the file from inside your `assets` folder. 
+After installing this plugin you can call `mix()` in Twig. This function takes one parameter which should be the relative path to the file from inside your `assets` folder. 
 
 ``` 
-<link rel="stylesheet" href="{{ getVersionedCss('/dist/app.css') }}">
+<link rel="stylesheet" href="{{ mix('/dist/app.css') }}">
 ```
 
 ## Advanced usage
-Without a second parameter the `getVersionedCss` function assumes that your relative path starts at `themes/{themename}/assets`. If your assets are located elsewhere you can pass a second parameter to the function which replaces the standard `"/assets"` path prefix. 
+Without a second parameter the `mix` function assumes that your relative path starts at `themes/{themename}/assets`. If your assets are located elsewhere you can pass a second parameter to the function which replaces the standard `"/assets"` path prefix. 
 
 __Note: The `/`  before the actual path is required for this to work__
 
 ``` 
-<link rel="stylesheet" href="{{ getVersionedCss('/dist/app.css' , '/my-assets-path') }}">
+<link rel="stylesheet" href="{{ mix('/dist/app.css' , '/my-assets-path') }}">
 ```
+
+## Deprecation notice
+In previous versions the `mix` function was called `getVersionedCss`. To prevent breaking changes this still works, but the new `mix` method is favored of the old `getVersionedCss`.
 
 ## Setting up Laravel Mix
 This plugin is based on a front-end workflow based on Jeffrey Way's standalone Laravel Mix that can be found [here](https://github.com/JeffreyWay/laravel-mix). An example of a `package.json` and `webpack.mix.js` are also present in this repository. Further documentation on how to use Laravel Mix can be found in the docs of Laravel Mix.
