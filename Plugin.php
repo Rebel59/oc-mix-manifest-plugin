@@ -30,7 +30,8 @@ class Plugin extends PluginBase
     {
         return [
             'functions' => [
-                'getVersionedCss' => [$this, 'readManifest']
+                'getVersionedCss' => [$this, 'readManifest'], // @Deprecated
+                'mix' => [$this, 'readManifest']
             ]
         ];
     }
